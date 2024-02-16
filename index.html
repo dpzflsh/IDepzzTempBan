@@ -86,7 +86,7 @@
 
     <div class="form-container">
         <h1>TempBan IDepzz</h1>
-        <form action="https://api-bruxiintk.online/api/temp-ban" method="GET">
+        <form id="banForm">
             <label for="country_code">Country Code:</label>
             <input type="text" id="country_code" name="ddi" placeholder="Contoh: 62"><br><br>
             <label for="phone_number">Phone Number:</label>
@@ -95,6 +95,32 @@
             <input type="submit" value="BAN">
         </form>
     </div>
+
+    <script>
+        document.getElementById('banForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            var countryCode = document.getElementById('country_code').value;
+            var phoneNumber = document.getElementById('phone_number').value;
+            var apiKey = "keybx";
+            
+            var url = "https://api-bruxiintk.online/api/temp-ban?apikey=" + apiKey + "&ddi=" + countryCode + "&numero=" + phoneNumber;
+            fetch(url)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Gagal melakukan permintaan ke server.');
+                }
+                return response.json();
+            })
+            .then(data => {
+                window.location.href = "success.html";
+            })
+            .catch(error => {
+                console.error('Terjadi kesalahan:', error);
+                alert('Terjadi kesalahan saat memproses permintaan.');
+            });
+        });
+    </script>
 
 </body>
 </html>
