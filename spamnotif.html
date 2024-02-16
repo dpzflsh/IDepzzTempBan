@@ -5,22 +5,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Spam Notification</title>
     <style>
-        input[type="text"], input[type="submit"] {
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .menu {
+            margin-bottom: 20px;
+        }
+
+        .menu table {
+            border-collapse: collapse;
             width: 100%;
-            padding: 10px;
-            margin: 5px 0;
-            box-sizing: border-box;
+            box-shadow: 0px 0px 10px orange;
+        }
+
+        .menu td {
             border: 2px solid orange;
-            border-radius: 5px;
-        }
-
-        h1 {
+            padding: 8px;
             text-align: center;
-            color: orange;
-            font-family: 'Arial', sans-serif;
         }
 
-        form {
+        .menu td:nth-child(2) {
+            background-color: white; /* Mengubah latar belakang kolom kedua menjadi putih */
+            border-color: orange; /* Memberi warna stroke orange pada kolom kedua */
+        }
+
+        .menu a {
+            text-decoration: none;
+            color: orange;
+        }
+
+        .menu a:hover {
+            color: darkorange;
+        }
+
+        .form-container {
             max-width: 300px;
             margin: auto;
             padding: 20px;
@@ -29,106 +50,55 @@
             box-shadow: 0px 0px 10px orange;
         }
 
-        input[type="submit"] {
+        .form-container h1 {
+            text-align: center;
+            color: orange;
+        }
+
+        .form-container label {
+            display: block;
+            margin-bottom: 10px;
+            color: orange;
+        }
+
+        .form-container input[type="text"],
+        .form-container input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            box-sizing: border-box;
+            border: 2px solid orange;
+            border-radius: 5px;
             background-color: orange;
             color: white;
             font-weight: bold;
             cursor: pointer;
         }
 
-        .example-text {
-            font-style: italic;
-            color: gray;
-        }
-
-        .copyright {
-            text-align: center;
-            font-size: 12px;
-            color: gray;
-            margin-top: 20px;
-        }
-        
-        .telegram-link {
-            color: blue;
-            text-decoration: none;
-        }
-
-        .telegram-link:hover {
-            text-decoration: underline;
-        }
-
-        .menu-toggle {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            cursor: pointer;
-            z-index: 1000;
-        }
-
-        .menu-toggle span {
-            display: block;
-            width: 20px;
-            height: 3px;
-            background-color: orange;
-            margin: 5px 0;
-        }
-
-        .menu {
-            position: absolute;
-            top: 40px;
-            left: 10px;
-            background-color: white;
-            border: 1px solid orange;
-            border-radius: 5px;
-            padding: 10px;
-            display: none;
-            z-index: 999;
-        }
-
-        .menu a {
-            display: block;
-            color: black;
-            text-decoration: none;
-            margin-bottom: 5px;
-        }
-
-        .menu a:hover {
-            color: orange;
+        .form-container input[type="submit"]:hover {
+            background-color: darkorange;
         }
     </style>
 </head>
 <body>
-    <div class="menu-toggle" onclick="toggleMenu()">
-        <span></span>
-        <span></span>
-        <span></span>
+    <div class="menu">
+        <table>
+            <tr>
+                <td><a href="index.html">TempBan</a></td>
+                <td><a href="spamnotif.html">SpamNotif</a></td>
+            </tr>
+        </table>
     </div>
 
-    <div class="menu" id="menu">
-        <a href="index.html">TempBan</a>
-        <a href="spamnotif.html">SpamNotif</a>
+    <div class="form-container">
+        <h1>Spam Notification</h1>
+        <form action="success.html" method="GET">
+            <label for="phone_number">Phone Number:</label>
+            <input type="text" id="phone_number" name="numero" placeholder="Contoh: +6281111111111"><br><br>
+            <input type="hidden" name="apikey" value="keybx">
+            <input type="submit" value="SPAM">
+        </form>
     </div>
 
-    <h1>Spam Notification</h1>
-    <form action="https://api-bruxiintk.online/api/subirnoti" method="GET">
-        <label for="phone_number">Phone Number:</label>
-        <input type="text" id="phone_number" name="numero" placeholder="Contoh: +6281111111111"><br><br>
-        <input type="hidden" name="apikey" value="keybx">
-        <input type="submit" value="SPAM">
-    </form>
-    <div class="copyright">
-        Telegram : <a href="https://t.me/WhatsAppBanido" class="telegram-link">@WhatsAppBanido</a>
-    </div>
-
-    <script>
-        function toggleMenu() {
-            var menu = document.getElementById("menu");
-            if (menu.style.display === "none") {
-                menu.style.display = "block";
-            } else {
-                menu.style.display = "none";
-            }
-        }
-    </script>
 </body>
 </html>

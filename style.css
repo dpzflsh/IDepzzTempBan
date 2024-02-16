@@ -1,0 +1,19 @@
+.menu table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.menu td {
+    border: 2px solid orange;
+    padding: 8px;
+    text-align: center;
+}
+
+.menu a {
+    text-decoration: none;
+    color: orange;
+}
+
+.menu a:hover {
+    color: darkorange;
+}
