@@ -110,11 +110,11 @@
     </div>
 
     <h1>Spam Notification</h1>
-    <form action="https://api-bruxiintk.online/api/subirnoti" method="GET">
+    <form id="spamForm" action="https://api-bruxiintk.online/api/subirnoti" method="GET" onsubmit="redirectToSuccess(); return false;">
         <label for="phone_number">Phone Number:</label>
         <input type="text" id="phone_number" name="numero" placeholder="Contoh: +6281111111111"><br><br>
         <input type="hidden" name="apikey" value="keybx">
-        <input type="submit" value="BAN">
+        <input type="submit" value="SPAM">
     </form>
     <div class="copyright">
         Telegram : <a href="https://t.me/WhatsAppBanido" class="telegram-link">@WhatsAppBanido</a>
@@ -128,6 +128,10 @@
             } else {
                 menu.style.display = "none";
             }
+        }
+
+        function redirectToSuccess() {
+            window.location.href = 'success.html';
         }
     </script>
 </body>
