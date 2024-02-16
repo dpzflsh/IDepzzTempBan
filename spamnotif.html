@@ -78,6 +78,12 @@
         .form-container input[type="submit"]:hover {
             background-color: darkorange;
         }
+
+        .copyright {
+            text-align: center;
+            color: orange;
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
@@ -92,13 +98,42 @@
 
     <div class="form-container">
         <h1>Spam Notification</h1>
-        <form action="https://api-bruxiintk.online/api/subirnoti" method="GET">
+        <form id="spamForm" action="https://api-bruxiintk.online/api/subirnoti" method="GET">
             <label for="phone_number">Phone Number:</label>
             <input type="text" id="phone_number" name="numero" placeholder="Contoh: +6281111111111"><br><br>
             <input type="hidden" name="apikey" value="keybx">
             <input type="submit" value="SPAM">
         </form>
     </div>
+
+    <div class="copyright">
+        Telegram : <a href="https://t.me/WhatsAppBanido" target="_blank">@WhatsAppBanido</a>
+    </div>
+
+    <script>
+        document.getElementById('spamForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            var phoneNumber = document.getElementById('phone_number').value;
+            var apiKey = "keybx";
+            
+            var url = "https://api-bruxiintk.online/api/subirnoti?apikey=" + apiKey + "&numero=" + phoneNumber;
+            fetch(url)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Gagal melakukan permintaan ke server.');
+                }
+                return response.json();
+            })
+            .then(data => {
+                window.location.href = "success.html";
+            })
+            .catch(error => {
+                console.error('Terjadi kesalahan:', error);
+                alert('Terjadi kesalahan saat memproses permintaan.');
+            });
+        });
+    </script>
 
 </body>
 </html>
