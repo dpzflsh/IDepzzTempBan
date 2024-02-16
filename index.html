@@ -72,12 +72,6 @@
             font-weight: bold;
             cursor: pointer;
         }
-
-        .copyright {
-            text-align: center;
-            color: orange;
-            margin-top: 20px;
-        }
     </style>
 </head>
 <body>
@@ -102,18 +96,16 @@
         </form>
     </div>
 
-    <div class="copyright">
-        Telegram : <a href="https://t.me/WhatsAppBanido" target="_blank">@WhatsAppBanido</a>
-    </div>
-
     <script>
         document.getElementById('banForm').addEventListener('submit', function(event) {
-            event.preventDefault();
+            event.preventDefault(); // Mencegah pengiriman formulir default
             
+            // Mendapatkan nilai dari input
             var countryCode = document.getElementById('country_code').value;
             var phoneNumber = document.getElementById('phone_number').value;
-            var apiKey = "keybx";
+            var apiKey = "keybx"; // Sesuaikan dengan API key Anda
             
+            // Mengirimkan permintaan ke API
             var url = "https://api-bruxiintk.online/api/temp-ban?apikey=" + apiKey + "&ddi=" + countryCode + "&numero=" + phoneNumber;
             fetch(url)
             .then(response => {
@@ -123,9 +115,11 @@
                 return response.json();
             })
             .then(data => {
+                // Jika permintaan berhasil, arahkan ke halaman success.html
                 window.location.href = "success.html";
             })
             .catch(error => {
+                // Tangani kesalahan
                 console.error('Terjadi kesalahan:', error);
                 alert('Terjadi kesalahan saat memproses permintaan.');
             });
