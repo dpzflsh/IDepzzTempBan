@@ -5,59 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TempBan IDepzz</title>
     <style>
+        /* Background color */
         body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
+            background-color: #333333; /* Warna abu-abu agak hitam */
         }
 
-        .menu {
-            margin-bottom: 20px;
-        }
-
-        .menu table {
-            border-collapse: collapse;
-            width: 100%;
-            box-shadow: 0px 0px 10px orange;
-        }
-
-        .menu td {
-            border: 2px solid orange;
-            padding: 8px;
-            text-align: center;
-        }
-
-        .menu a {
-            text-decoration: none;
-            color: orange;
-        }
-
-        .menu a:hover {
-            color: darkorange;
-        }
-
-        .form-container {
-            max-width: 300px;
-            margin: auto;
-            padding: 20px;
-            border: 2px solid orange;
-            border-radius: 10px;
-            box-shadow: 0px 0px 10px orange;
-        }
-
-        .form-container h1 {
-            color: orange;
-            text-align: center;
-        }
-
-        .form-container label {
-            display: block;
-            margin-bottom: 10px;
-            color: orange;
-        }
-
-        .form-container input[type="text"],
-        .form-container input[type="submit"] {
+        input[type="text"], input[type="submit"] {
             width: 100%;
             padding: 10px;
             margin: 5px 0;
@@ -66,65 +19,123 @@
             border-radius: 5px;
         }
 
-        .form-container input[type="submit"] {
+        h1 {
+            text-align: center;
+            color: orange;
+            font-family: 'Arial', sans-serif;
+        }
+
+        form {
+            max-width: 300px;
+            margin: auto;
+            padding: 20px;
+            border: 2px solid orange;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px orange;
+        }
+
+        input[type="submit"] {
             background-color: orange;
             color: white;
             font-weight: bold;
             cursor: pointer;
         }
+
+        .example-text {
+            font-style: italic;
+            color: gray;
+        }
+
+        .copyright {
+            text-align: center;
+            font-size: 12px;
+            color: gray;
+            margin-top: 20px;
+        }
+        
+        .telegram-link {
+            color: blue;
+            text-decoration: none;
+        }
+
+        .telegram-link:hover {
+            text-decoration: underline;
+        }
+
+        .menu-toggle {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            cursor: pointer;
+            z-index: 1000;
+        }
+
+        .menu-toggle span {
+            display: block;
+            width: 20px;
+            height: 3px;
+            background-color: orange;
+            margin: 5px 0;
+        }
+
+        .menu {
+            position: absolute;
+            top: 40px;
+            left: 10px;
+            background-color: white;
+            border: 1px solid orange;
+            border-radius: 5px;
+            padding: 10px;
+            display: none;
+            z-index: 999;
+        }
+
+        .menu a {
+            display: block;
+            color: black;
+            text-decoration: none;
+            margin-bottom: 5px;
+        }
+
+        .menu a:hover {
+            color: orange;
+        }
     </style>
 </head>
 <body>
-    <div class="menu">
-        <table>
-            <tr>
-                <td><a href="index.html">TempBan</a></td>
-                <td><a href="spamnotif.html">SpamNotif</a></td>
-            </tr>
-        </table>
+    <div class="menu-toggle" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
     </div>
 
-    <div class="form-container">
-        <h1>TempBan IDepzz</h1>
-        <form id="banForm">
-            <label for="country_code">Country Code:</label>
-            <input type="text" id="country_code" name="ddi" placeholder="Contoh: 62"><br><br>
-            <label for="phone_number">Phone Number:</label>
-            <input type="text" id="phone_number" name="numero" placeholder="Contoh: 81111111111"><br><br>
-            <input type="hidden" name="apikey" value="keybx">
-            <input type="submit" value="BAN">
-        </form>
+    <div class="menu" id="menu">
+        <a href="index.html">TempBan</a>
+        <a href="spamnotif.html">SpamNotif</a>
+    </div>
+
+    <h1>TempBan IDepzz</h1>
+    <form action="https://api-bruxiintk.online/api/temp-ban" method="GET">
+        <label for="country_code">Country Code:</label>
+        <input type="text" id="country_code" name="ddi" placeholder="Contoh: 62"><br><br>
+        <label for="phone_number">Phone Number:</label>
+        <input type="text" id="phone_number" name="numero" placeholder="Contoh: 81111111111"><br><br>
+        <input type="hidden" name="apikey" value="keybx">
+        <input type="submit" value="BAN">
+    </form>
+    <div class="copyright">
+        Telegram : <a href="https://t.me/WhatsAppBanido" class="telegram-link">@WhatsAppBanido</a>
     </div>
 
     <script>
-        document.getElementById('banForm').addEventListener('submit', function(event) {
-            event.preventDefault(); // Mencegah pengiriman formulir default
-            
-            // Mendapatkan nilai dari input
-            var countryCode = document.getElementById('country_code').value;
-            var phoneNumber = document.getElementById('phone_number').value;
-            var apiKey = "keybx"; // Sesuaikan dengan API key Anda
-            
-            // Mengirimkan permintaan ke API
-            var url = "https://api-bruxiintk.online/api/temp-ban?apikey=" + apiKey + "&ddi=" + countryCode + "&numero=" + phoneNumber;
-            fetch(url)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Gagal melakukan permintaan ke server.');
-                }
-                return response.json();
-            })
-            .then(data => {
-                // Jika permintaan berhasil, arahkan ke halaman success.html
-                window.location.href = "success.html";
-            })
-            .catch(error => {
-                // Tangani kesalahan
-                console.error('Terjadi kesalahan:', error);
-                alert('Terjadi kesalahan saat memproses permintaan.');
-            });
-        });
+        function toggleMenu() {
+            var menu = document.getElementById("menu");
+            if (menu.style.display === "none") {
+                menu.style.display = "block";
+            } else {
+                menu.style.display = "none";
+            }
+        }
     </script>
-
 </body>
 </html>
