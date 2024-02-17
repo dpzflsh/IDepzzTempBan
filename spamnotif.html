@@ -9,6 +9,53 @@
     margin: 0;
     font-family: Arial, sans-serif;
   }
+
+  .menu-icon {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    cursor: pointer;
+    z-index: 9999;
+  }
+
+  .line {
+    width: 30px;
+    height: 4px;
+    background-color: black;
+    margin: 6px 0;
+    transition: 0.4s;
+  }
+
+  .rotate {
+    transform: rotate(-45deg);
+  }
+
+  .menu {
+    position: fixed;
+    top: 40px;
+    left: 20px;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    z-index: 9998;
+    border-radius: 10px;
+  }
+
+  .menu-options {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    border: 2px solid green;
+    animation: colorChange 5s infinite;
+  }
+
+  .menu-options a {
+    display: block;
+    margin-bottom: 10px;
+    text-decoration: none;
+    color: black;
+    font-size: 18px;
+  }
+
   .container {
     width: 60%;
     margin: 100px auto;
@@ -18,16 +65,19 @@
     border-radius: 10px;
     box-shadow: 0 0 20px green;
   }
+
   h2 {
     font-size: 24px;
     text-align: center;
     margin-bottom: 20px;
   }
+
   label {
     display: block;
     margin-bottom: 10px;
     font-size: 18px;
   }
+
   input {
     width: calc(100% - 22px);
     padding: 10px;
@@ -36,10 +86,12 @@
     border-radius: 5px;
     font-size: 16px;
   }
+
   .error {
     color: red;
     margin-top: 5px;
   }
+
   button {
     width: calc(100% - 22px);
     padding: 15px;
@@ -50,13 +102,54 @@
     cursor: pointer;
     font-size: 16px;
   }
+
   footer {
     text-align: center;
     margin-top: 20px;
   }
+
+  footer p {
+    margin: 0;
+  }
+
+  footer a {
+    text-decoration: none;
+    color: black;
+  }
+
+  @keyframes colorChange {
+    0% {
+      border-color: green;
+    }
+    25% {
+      border-color: blue;
+    }
+    50% {
+      border-color: red;
+    }
+    75% {
+      border-color: yellow;
+    }
+    100% {
+      border-color: green;
+    }
+  }
 </style>
 </head>
 <body>
+
+<div class="menu-icon" onclick="toggleMenu()">
+  <div class="line"></div>
+  <div class="line"></div>
+  <div class="line"></div>
+</div>
+
+<div class="menu" id="menu">
+  <div class="menu-options" id="menuOptions">
+    <a href="index.html">Temp Ban</a>
+    <a href="spamnotif.html">Spam Notif</a>
+  </div>
+</div>
 
 <div class="container">
   <h2>Spam Notification</h2>
@@ -65,7 +158,7 @@
     <input type="text" id="phoneNumber" placeholder="Contoh: +6281111111111">
     <div id="phoneNumberError" class="error"></div>
     
-    <button type="button" onclick="spamUser()">SPAM</button>
+    <button type="button" onclick="submitSpam()">SPAM</button>
   </form>
 </div>
 
@@ -74,26 +167,48 @@
 </footer>
 
 <script>
+function toggleMenu() {
+  var menu = document.getElementById("menu");
+  
+  menu.classList.toggle("show");
+  
+  if (menu.classList.contains("show")) {
+    menu.style.display = "flex";
+  } else {
+    menu.style.display = "none";
+  }
+}
+
 function validateForm() {
   var phoneNumber = document.getElementById("phoneNumber").value;
   var phoneNumberPattern = /^\+\d{11,15}$/;
-  var phoneNumberError = document.getElementById("phoneNumberError");
 
+  var phoneNumberError = document.getElementById("phoneNumberError");
   phoneNumberError.innerHTML = "";
 
   if (!phoneNumberPattern.test(phoneNumber)) {
-    phoneNumberError.innerHTML = "Masukkan nomor telepon yang valid (minimal 11, maksimal 15 digit angka, dimulai dengan +)";
+    phoneNumberError.innerHTML = "Masukkan nomor telepon yang valid (contoh: +6281111111111)";
     return false;
   }
 
   return true;
 }
 
-function spamUser() {
+function submitSpam() {
   if (validateForm()) {
     var phoneNumber = document.getElementById("phoneNumber").value;
     var apiLink = `https://api-bruxiintk.online/api/subirnoti?apikey=devs30&numero=${phoneNumber}`;
-    window.location.href = apiLink;
+    fetch(apiLink)
+      .then(response => {
+        if (response.ok) {
+          window.location.href = apiLink;
+        } else {
+          throw new Error("Terjadi kesalahan saat mengirimkan spam.");
+        }
+      })
+      .catch(error => {
+        alert(error.message);
+      });
   }
 }
 </script>
