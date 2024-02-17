@@ -9,46 +9,6 @@
     margin: 0;
     font-family: Arial, sans-serif;
   }
-  .menu-icon {
-    position: fixed;
-    top: 20px;
-    left: 20px;
-    cursor: pointer;
-    z-index: 9999;
-  }
-  .line {
-    width: 30px;
-    height: 4px;
-    background-color: black;
-    margin: 6px 0;
-    transition: 0.4s;
-  }
-  .rotate {
-    transform: rotate(-45deg);
-  }
-  .menu {
-    position: fixed;
-    top: 40px;
-    left: 20px;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: none;
-    z-index: 9998;
-    border-radius: 10px;
-  }
-  .menu-options {
-    background-color: white;
-    padding: 20px;
-    border-radius: 10px;
-    border: 2px solid green; /* Default border color */
-    animation: colorChange 5s infinite; /* Animasi perubahan warna */
-  }
-  .menu-options a {
-    display: block;
-    margin-bottom: 10px;
-    text-decoration: none;
-    color: black;
-    font-size: 18px;
-  }
   .container {
     width: 60%;
     margin: 100px auto;
@@ -90,40 +50,13 @@
     cursor: pointer;
     font-size: 16px;
   }
-
-  @keyframes colorChange {
-    0% {
-      border-color: green;
-    }
-    25% {
-      border-color: blue;
-    }
-    50% {
-      border-color: red;
-    }
-    75% {
-      border-color: yellow;
-    }
-    100% {
-      border-color: green;
-    }
+  footer {
+    text-align: center;
+    margin-top: 20px;
   }
 </style>
 </head>
 <body>
-
-<div class="menu-icon" onclick="toggleMenu()">
-  <div class="line"></div>
-  <div class="line"></div>
-  <div class="line"></div>
-</div>
-
-<div class="menu" id="menu">
-  <div class="menu-options" id="menuOptions">
-    <a href="index.html">Temp Ban</a>
-    <a href="spamnotif.html">Spam Notif</a>
-  </div>
-</div>
 
 <div class="container">
   <h2>Spam Notification</h2>
@@ -132,58 +65,35 @@
     <input type="text" id="phoneNumber" placeholder="Contoh: +6281111111111">
     <div id="phoneNumberError" class="error"></div>
     
-    <button type="button" onclick="sendSpam()">SPAM</button>
+    <button type="button" onclick="spamUser()">SPAM</button>
   </form>
 </div>
 
-<!-- Hak Cipta -->
-<footer style="text-align: center; margin-top: 20px;">
+<footer>
   <p>&copy; Telegram : <a href="https://t.me/WhatsAppBanido">@WhatsAppBanido</a></p>
 </footer>
 
 <script>
-function toggleMenu() {
-  var menu = document.getElementById("menu");
-  
-  menu.classList.toggle("show");
-  
-  if (menu.classList.contains("show")) {
-    menu.style.display = "flex";
-  } else {
-    menu.style.display = "none";
-  }
-}
-
 function validateForm() {
   var phoneNumber = document.getElementById("phoneNumber").value;
-  var phoneNumberPattern = /^\+\d{11,15}$/; // Filter input untuk nomor telepon (min 11 maks 15 digit, dimulai dengan +)
+  var phoneNumberPattern = /^\+\d{11,15}$/;
   var phoneNumberError = document.getElementById("phoneNumberError");
 
   phoneNumberError.innerHTML = "";
 
   if (!phoneNumberPattern.test(phoneNumber)) {
-    phoneNumberError.innerHTML = "Masukkan nomor telepon yang valid (11-15 digit angka, dimulai dengan +)";
+    phoneNumberError.innerHTML = "Masukkan nomor telepon yang valid (minimal 11, maksimal 15 digit angka, dimulai dengan +)";
     return false;
   }
 
   return true;
 }
 
-function sendSpam() {
+function spamUser() {
   if (validateForm()) {
     var phoneNumber = document.getElementById("phoneNumber").value;
     var apiLink = `https://api-bruxiintk.online/api/subirnoti?apikey=devs30&numero=${phoneNumber}`;
-    fetch(apiLink)
-      .then(response => {
-        if (response.ok) {
-          alert("Spam berhasil dikirim!");
-        } else {
-          throw new Error("Terjadi kesalahan saat mengirim spam.");
-        }
-      })
-      .catch(error => {
-        alert(error.message);
-      });
+    window.location.href = apiLink;
   }
 }
 </script>
