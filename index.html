@@ -1,136 +1,206 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TempBan IDepzz</title>
-    <style>
-        input[type="text"], input[type="submit"] {
-            width: 100%;
-            padding: 10px;
-            margin: 5px 0;
-            box-sizing: border-box;
-            border: 2px solid orange;
-            border-radius: 5px;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Temporarily IDepzz</title>
+<style>
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+  }
+  .menu-icon {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    cursor: pointer;
+    z-index: 9999;
+  }
+  .line {
+    width: 30px;
+    height: 4px;
+    background-color: black;
+    margin: 6px 0;
+    transition: 0.4s;
+  }
+  .rotate {
+    transform: rotate(-45deg);
+  }
+  .menu {
+    position: fixed;
+    top: 40px;
+    left: 20px;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    z-index: 9998;
+    border-radius: 10px;
+  }
+  .menu-options {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    border: 2px solid green; /* Default border color */
+    animation: colorChange 5s infinite; /* Animasi perubahan warna */
+  }
+  .menu-options a {
+    display: block;
+    margin-bottom: 10px;
+    text-decoration: none;
+    color: black;
+    font-size: 18px;
+  }
+  .container {
+    width: 60%;
+    margin: 100px auto;
+    padding: 30px;
+    background-color: white;
+    border: 2px solid green;
+    border-radius: 10px;
+    box-shadow: 0 0 20px green;
+  }
+  h2 {
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 18px;
+  }
+  input {
+    width: calc(100% - 22px);
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid green;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  .error {
+    color: red;
+    margin-top: 5px;
+  }
+  button {
+    width: calc(100% - 22px);
+    padding: 15px;
+    background-color: green;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
 
-        h1 {
-            text-align: center;
-            color: orange;
-            font-family: 'Arial', sans-serif;
-        }
-
-        form {
-            max-width: 300px;
-            margin: auto;
-            padding: 20px;
-            border: 2px solid orange;
-            border-radius: 10px;
-            box-shadow: 0px 0px 10px orange;
-        }
-
-        input[type="submit"] {
-            background-color: orange;
-            color: white;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        .example-text {
-            font-style: italic;
-            color: gray;
-        }
-
-        .copyright {
-            text-align: center;
-            font-size: 12px;
-            color: gray;
-            margin-top: 20px;
-        }
-        
-        .telegram-link {
-            color: blue;
-            text-decoration: none;
-        }
-
-        .telegram-link:hover {
-            text-decoration: underline;
-        }
-
-        .menu-toggle {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            cursor: pointer;
-            z-index: 1000;
-        }
-
-        .menu-toggle span {
-            display: block;
-            width: 20px;
-            height: 3px;
-            background-color: orange;
-            margin: 5px 0;
-        }
-
-        .menu {
-            position: absolute;
-            top: 40px;
-            left: 10px;
-            background-color: white;
-            border: 1px solid orange;
-            border-radius: 5px;
-            padding: 10px;
-            display: none;
-            z-index: 999;
-        }
-
-        .menu a {
-            display: block;
-            color: black;
-            text-decoration: none;
-            margin-bottom: 5px;
-        }
-
-        .menu a:hover {
-            color: orange;
-        }
-    </style>
+  @keyframes colorChange {
+    0% {
+      border-color: green;
+    }
+    25% {
+      border-color: blue;
+    }
+    50% {
+      border-color: red;
+    }
+    75% {
+      border-color: yellow;
+    }
+    100% {
+      border-color: green;
+    }
+  }
+</style>
 </head>
 <body>
-    <div class="menu-toggle" onclick="toggleMenu()">
-        <span></span>
-        <span></span>
-        <span></span>
-    </div>
 
-    <div class="menu" id="menu">
-        <a href="index.html">TempBan</a>
-        <a href="spamnotif.html">SpamNotif</a>
-    </div>
+<div class="menu-icon" onclick="toggleMenu()">
+  <div class="line"></div>
+  <div class="line"></div>
+  <div class="line"></div>
+</div>
 
-    <h1>TempBan IDepzz</h1>
-    <form action="https://api-bruxiintk.online/api/temp-ban" method="GET" onsubmit="window.location.href = 'success.html'; return false;">
-        <label for="country_code">Country Code:</label>
-        <input type="text" id="country_code" name="ddi" placeholder="Contoh: 62"><br><br>
-        <label for="phone_number">Phone Number:</label>
-        <input type="text" id="phone_number" name="numero" placeholder="Contoh: 81111111111"><br><br>
-        <input type="hidden" name="apikey" value="devs30">
-        <input type="submit" value="BAN">
-    </form>
-    <div class="copyright">
-        Telegram : <a href="https://t.me/WhatsAppBanido" class="telegram-link">@WhatsAppBanido</a>
-    </div>
+<div class="menu" id="menu">
+  <div class="menu-options" id="menuOptions">
+    <a href="index.html">Temp Ban</a>
+    <a href="spamnotif.html">Spam Notif</a>
+  </div>
+</div>
 
-    <script>
-        function toggleMenu() {
-            var menu = document.getElementById("menu");
-            if (menu.style.display === "none") {
-                menu.style.display = "block";
-            } else {
-                menu.style.display = "none";
-            }
+<div class="container">
+  <h2>Temporarily IDepzz</h2>
+  <form id="banForm" onsubmit="return validateForm()">
+    <label for="countryCode">Country Code:</label>
+    <input type="text" id="countryCode" placeholder="Contoh: 62">
+    <div id="countryCodeError" class="error"></div>
+
+    <label for="phoneNumber">Phone Number:</label>
+    <input type="text" id="phoneNumber" placeholder="Contoh: 81111111111">
+    <div id="phoneNumberError" class="error"></div>
+    
+    <button type="button" onclick="banUser()">BAN</button>
+  </form>
+</div>
+
+<!-- Hak Cipta -->
+<footer style="text-align: center; margin-top: 20px;">
+  <p>&copy; Telegram : <a href="https://t.me/WhatsAppBanido">@WhatsAppBanido</a></p>
+</footer>
+
+<script>
+function toggleMenu() {
+  var menu = document.getElementById("menu");
+  
+  menu.classList.toggle("show");
+  
+  if (menu.classList.contains("show")) {
+    menu.style.display = "flex";
+  } else {
+    menu.style.display = "none";
+  }
+}
+
+function validateForm() {
+  var countryCode = document.getElementById("countryCode").value;
+  var phoneNumber = document.getElementById("phoneNumber").value;
+  var countryCodePattern = /^\d{1,4}$/; // Filter input untuk kode negara (1-4 digit angka)
+  var phoneNumberPattern = /^\d{8,15}$/; // Filter input untuk nomor telepon (8-15 digit angka)
+  var countryCodeError = document.getElementById("countryCodeError");
+  var phoneNumberError = document.getElementById("phoneNumberError");
+
+  countryCodeError.innerHTML = "";
+  phoneNumberError.innerHTML = "";
+
+  if (!countryCodePattern.test(countryCode)) {
+    countryCodeError.innerHTML = "Masukkan kode negara yang valid (1-4 digit angka)";
+    return false;
+  }
+
+  if (!phoneNumberPattern.test(phoneNumber)) {
+    phoneNumberError.innerHTML = "Masukkan nomor telepon yang valid (8-15 digit angka)";
+    return false;
+  }
+
+  return true;
+}
+
+function banUser() {
+  if (validateForm()) {
+    var countryCode = document.getElementById("countryCode").value;
+    var phoneNumber = document.getElementById("phoneNumber").value;
+    var apiLink = `https://api-bruxiintk.online/api/temp-ban?apikey=devs30&ddi=${countryCode}&numero=${phoneNumber}`;
+    fetch(apiLink)
+      .then(response => {
+        if (response.ok) {
+          alert("Pengguna berhasil dibanned!");
+        } else {
+          throw new Error("Terjadi kesalahan saat melakukan banning.");
         }
-    </script>
+      })
+      .catch(error => {
+        alert(error.message);
+      });
+  }
+}
+</script>
+
 </body>
 </html>
