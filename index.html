@@ -39,8 +39,8 @@
     background-color: white;
     padding: 20px;
     border-radius: 10px;
-    border: 2px solid green; /* Default border color */
-    animation: colorChange 5s infinite; /* Animasi perubahan warna */
+    border: 2px solid green;
+    animation: colorChange 5s infinite;
   }
   .menu-options a {
     display: block;
@@ -140,7 +140,6 @@
   </form>
 </div>
 
-<!-- Hak Cipta -->
 <footer style="text-align: center; margin-top: 20px;">
   <p>&copy; Telegram : <a href="https://t.me/WhatsAppBanido">@WhatsAppBanido</a></p>
 </footer>
@@ -161,8 +160,8 @@ function toggleMenu() {
 function validateForm() {
   var countryCode = document.getElementById("countryCode").value;
   var phoneNumber = document.getElementById("phoneNumber").value;
-  var countryCodePattern = /^\d{1,4}$/; // Filter input untuk kode negara (1-4 digit angka)
-  var phoneNumberPattern = /^\d{8,15}$/; // Filter input untuk nomor telepon (8-15 digit angka)
+  var countryCodePattern = /^\d{1,4}$/;
+  var phoneNumberPattern = /^\d{8,15}$/;
   var countryCodeError = document.getElementById("countryCodeError");
   var phoneNumberError = document.getElementById("phoneNumberError");
 
@@ -187,17 +186,7 @@ function banUser() {
     var countryCode = document.getElementById("countryCode").value;
     var phoneNumber = document.getElementById("phoneNumber").value;
     var apiLink = `https://api-bruxiintk.online/api/temp-ban?apikey=devs30&ddi=${countryCode}&numero=${phoneNumber}`;
-    fetch(apiLink)
-      .then(response => {
-        if (response.ok) {
-          alert("Pengguna berhasil dibanned!");
-        } else {
-          throw new Error("Terjadi kesalahan saat melakukan banning.");
-        }
-      })
-      .catch(error => {
-        alert(error.message);
-      });
+    window.location.href = apiLink;
   }
 }
 </script>
