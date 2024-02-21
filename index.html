@@ -1,195 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Temporarily IDepzz</title>
-<style>
-  body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-  }
-  .menu-icon {
-    position: fixed;
-    top: 20px;
-    left: 20px;
-    cursor: pointer;
-    z-index: 9999;
-  }
-  .line {
-    width: 30px;
-    height: 4px;
-    background-color: black;
-    margin: 6px 0;
-    transition: 0.4s;
-  }
-  .rotate {
-    transform: rotate(-45deg);
-  }
-  .menu {
-    position: fixed;
-    top: 40px;
-    left: 20px;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: none;
-    z-index: 9998;
-    border-radius: 10px;
-  }
-  .menu-options {
-    background-color: white;
-    padding: 20px;
-    border-radius: 10px;
-    border: 2px solid green;
-    animation: colorChange 5s infinite;
-  }
-  .menu-options a {
-    display: block;
-    margin-bottom: 10px;
-    text-decoration: none;
-    color: black;
-    font-size: 18px;
-  }
-  .container {
-    width: 60%;
-    margin: 100px auto;
-    padding: 30px;
-    background-color: white;
-    border: 2px solid green;
-    border-radius: 10px;
-    box-shadow: 0 0 20px green;
-  }
-  h2 {
-    font-size: 24px;
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  label {
-    display: block;
-    margin-bottom: 10px;
-    font-size: 18px;
-  }
-  input {
-    width: calc(100% - 22px);
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid green;
-    border-radius: 5px;
-    font-size: 16px;
-  }
-  .error {
-    color: red;
-    margin-top: 5px;
-  }
-  button {
-    width: calc(100% - 22px);
-    padding: 15px;
-    background-color: green;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-  }
-
-  @keyframes colorChange {
-    0% {
-      border-color: green;
-    }
-    25% {
-      border-color: blue;
-    }
-    50% {
-      border-color: red;
-    }
-    75% {
-      border-color: yellow;
-    }
-    100% {
-      border-color: green;
-    }
-  }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Dead</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .message-box {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            max-width: 400px;
+            width: 100%;
+        }
+        h1 {
+            font-size: 24px;
+            color: #333333;
+            margin-bottom: 10px;
+        }
+        p {
+            font-size: 16px;
+            color: #666666;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+        .link {
+            color: #4CAF50;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+        .link:hover {
+            color: #45a049;
+        }
+    </style>
 </head>
 <body>
-
-<div class="menu-icon" onclick="toggleMenu()">
-  <div class="line"></div>
-  <div class="line"></div>
-  <div class="line"></div>
-</div>
-
-<div class="menu" id="menu">
-  <div class="menu-options" id="menuOptions">
-    <a href="index.html">Temp Ban</a>
-    <a href="spamnotif.html">Spam Notif</a>
-  </div>
-</div>
-
-<div class="container">
-  <h2>Temporarily IDepzz</h2>
-  <form id="banForm" onsubmit="return validateForm()">
-    <label for="countryCode">Country Code:</label>
-    <input type="text" id="countryCode" placeholder="Contoh: 62">
-    <div id="countryCodeError" class="error"></div>
-
-    <label for="phoneNumber">Phone Number:</label>
-    <input type="text" id="phoneNumber" placeholder="Contoh: 81111111111">
-    <div id="phoneNumberError" class="error"></div>
-    
-    <button type="button" onclick="banUser()">BAN</button>
-  </form>
-</div>
-
-<footer style="text-align: center; margin-top: 20px;">
-  <p>&copy; Telegram : <a href="https://t.me/WhatsAppBanido">@WhatsAppBanido</a></p>
-</footer>
-
-<script>
-function toggleMenu() {
-  var menu = document.getElementById("menu");
-  
-  menu.classList.toggle("show");
-  
-  if (menu.classList.contains("show")) {
-    menu.style.display = "flex";
-  } else {
-    menu.style.display = "none";
-  }
-}
-
-function validateForm() {
-  var countryCode = document.getElementById("countryCode").value;
-  var phoneNumber = document.getElementById("phoneNumber").value;
-  var countryCodePattern = /^\d{1,4}$/;
-  var phoneNumberPattern = /^\d{8,15}$/;
-  var countryCodeError = document.getElementById("countryCodeError");
-  var phoneNumberError = document.getElementById("phoneNumberError");
-
-  countryCodeError.innerHTML = "";
-  phoneNumberError.innerHTML = "";
-
-  if (!countryCodePattern.test(countryCode)) {
-    countryCodeError.innerHTML = "Masukkan kode negara yang valid (1-4 digit angka)";
-    return false;
-  }
-
-  if (!phoneNumberPattern.test(phoneNumber)) {
-    phoneNumberError.innerHTML = "Masukkan nomor telepon yang valid (8-15 digit angka)";
-    return false;
-  }
-
-  return true;
-}
-
-function banUser() {
-  if (validateForm()) {
-    var countryCode = document.getElementById("countryCode").value;
-    var phoneNumber = document.getElementById("phoneNumber").value;
-    var apiLink = `https://api-bruxiintk.online/api/temp-ban?apikey=devs30&ddi=${countryCode}&numero=${phoneNumber}`;
-    window.location.href = apiLink;
-  }
-}
-</script>
-
+    <div class="message-box">
+        <h1>Website Dead!</h1>
+        <p>Kenapa? karena ketahuan ada yang open murid tapi pake web gwa tanpa izin. Join murid hanya di <span class="link"><a href="https://t.me/WhatsAppBanido">@WhatsAppBanido</a></span> kalau mau website-website baru. Dan buat elu yang open murid pake web gw yatim.</p>
+    </div>
 </body>
 </html>
