@@ -1,1 +1,219 @@
-<script type="text/javascript" src="https://jso-tools.z-x.my.id/raw/~/0ONUDT87PXRVR"></script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biodata</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        body.light {
+            background-color: #f0f0f0;
+            color: #333;
+        }
+        body.dark {
+            background-color: #121212;
+            color: #f0f0f0;
+        }
+        .container {
+            width: 80%;
+            margin: 50px auto;
+            background: var(--container-bg);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+            z-index: 1;
+            transition: background 0.3s;
+        }
+        .header {
+            background: linear-gradient(135deg, #6B73FF, #000DFF);
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+        .theme-toggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            cursor: pointer;
+            font-size: 1.5em;
+            color: #fff;
+        }
+        .content {
+            padding: 20px;
+        }
+        .content .section {
+            margin-bottom: 20px;
+        }
+        .content .section h2 {
+            margin-bottom: 10px;
+            color: inherit;
+        }
+        .content .section p {
+            margin: 5px 0;
+            line-height: 1.6;
+            color: inherit;
+        }
+        .icon {
+            margin-right: 10px;
+            color: #6B73FF;
+        }
+        .social-links {
+            text-align: center;
+            padding: 20px;
+            background: var(--social-bg);
+        }
+        .social-links a {
+            margin: 0 10px;
+            text-decoration: none;
+            color: inherit;
+            font-size: 1.5em;
+        }
+        .social-links a:hover {
+            color: #6B73FF;
+        }
+        .background {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            overflow: hidden;
+            z-index: 0;
+        }
+        .background .circle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(107, 115, 255, 0.6);
+            animation: float 5s infinite ease-in-out;
+        }
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+        .circle:nth-child(1) {
+            width: 100px;
+            height: 100px;
+            top: 10%;
+            left: 10%;
+            animation-duration: 6s;
+        }
+        .circle:nth-child(2) {
+            width: 150px;
+            height: 150px;
+            top: 40%;
+            left: 60%;
+            animation-duration: 8s;
+        }
+        .circle:nth-child(3) {
+            width: 75px;
+            height: 75px;
+            top: 70%;
+            left: 20%;
+            animation-duration: 7s;
+        }
+        .section h2 {
+            position: relative;
+        }
+        .section h2::before {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 5px;
+            background: #6B73FF;
+            bottom: -10px;
+            left: 0;
+            border-radius: 5px;
+            animation: underline 2s infinite;
+        }
+        @keyframes underline {
+            0%, 100% {
+                width: 50px;
+            }
+            50% {
+                width: 80px;
+            }
+        }
+    </style>
+</head>
+<body class="light">
+    <div class="background">
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+    </div>
+    <div class="container">
+        <div class="header">
+            <h1>Biodata</h1>
+            <div class="theme-toggle" onclick="toggleTheme()">
+                <i class="fas fa-sun"></i>
+                <i class="fas fa-moon" style="display: none;"></i>
+            </div>
+        </div>
+        <div class="content">
+            <div class="section">
+                <h2><i class="fas fa-user icon"></i>Data Pribadi</h2>
+                <p><strong>Nama :</strong> Farras Hilmi Al Faqih</p>
+                <p><strong>Usia :</strong> 16</p>
+                <p><strong>Alamat :</strong> -</p>
+                <p><strong>Email :</strong> idepzzhost@gmail.com</p>
+                <p><strong>Telepon :</strong> +6282133409940</p>
+            </div>
+            <div class="section">
+                <h2><i class="fas fa-graduation-cap icon"></i>Pendidikan</h2>
+                <p><strong>Sekolah Dasar :</strong> SDN Banjarsari</p>
+                <p><strong>Sekolah Menengah Pertama :</strong> MtsN 3 Windusari</p>
+                <p><strong>Sekolah Menengah Atas :</strong> Smkn 1 Windusari</p>
+            </div>
+            <div class="section">
+                <h2><i class="fas fa-briefcase icon"></i>Pekerjaan</h2>
+                <p><strong>Posisi :</strong> Pelajar</p>
+                <p><strong>Hobi :</strong> Coding</p>
+                <p><strong>Bahasa Program Fav :</strong> Python</p>
+                <p><strong>Est :</strong> 2021</p>
+            </div>
+        </div>
+        <div class="social-links">
+            <h2>Temukan Saya di</h2>
+            <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook"></i></a>
+            <a href="https://www.twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.instagram.com/its_me_farras" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="https://t.me/PresidentSoekarno" target="_blank"><i class="fab fa-telegram"></i></a>
+        </div>
+    </div>
+
+    <script>
+        function toggleTheme() {
+            const body = document.body;
+            const themeToggle = document.querySelector('.theme-toggle');
+            body.classList.toggle('dark');
+            body.classList.toggle('light');
+
+            if (body.classList.contains('dark')) {
+                themeToggle.querySelector('.fa-moon').style.display = 'block';
+                themeToggle.querySelector('.fa-sun').style.display = 'none';
+            } else {
+                themeToggle.querySelector('.fa-moon').style.display = 'none';
+                themeToggle.querySelector('.fa-sun').style.display = 'block';
+            }
+        }
+    </script>
+</body>
+  </html>
+  
